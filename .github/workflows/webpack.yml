@@ -1,0 +1,25 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: 47.107.72.163
+          username: root
+          password: ZXCasd123
+          command_timeout: 5m
+          script: |
+            cd /home/watermark
+            git pull
