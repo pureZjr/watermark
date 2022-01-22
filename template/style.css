@@ -1,0 +1,19 @@
+.progress{
+  width: 50%;
+  height: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+  position: relative;
+}
+.progress>span{
+  display: inline-block;
+  position: absolute;
+  border-radius: 4px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgb(98, 230, 74);
+  transition: width 0.3s ease-out;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="./style.css">
+  </link>
+</head>
+
+<body>
+  <div class="radio-wrap">
+    <div>
+      <input type="radio" id="embed" name="watermark" value="embed" checked>
+      <label for="embed">加盲水印</label>
+    </div>
+    <div>
+      <input type="radio" id="extract" name="watermark" value="extract">
+      <label for="extract">提取盲水印信息</label>
+    </div>
+  </div>
+  <div>
+    <input id="file" type="file">
+    <div class="progress">
+      <span></span>
+    </div>
+  </div>
+  <div>
+    <label>水印信息</label>
+    <input type="text" id="info" placeholder="输入水印信息" />
+  </div>
+  <div>
+    <label>水印密码（数字）</label>
+    <input type="" id="pwd" placeholder="输入水印密码（数字）" onkeyup="value=value.replace(/[^\d]/g,'')" />
+  </div>
+  <div class="btns">
+    <span>提交</span>
+    <span>提取</span>
+    <span>取消</span>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script type="text/javascript" src="./utils.js"></script>
+  <script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
