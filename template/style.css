@@ -1,3 +1,122 @@
+html{
+  height: 100%;
+  width: 100%;
+
+}
+
+body{
+  background-image:url('./assets/bg.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.radio-wrap {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  background: hsl(0deg 0% 100% / 76%);
+  color: #2b3e37;
+  font-weight: 900;
+  font-size: 27px;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 0 24px;
+  margin: 24px auto;
+}
+
+.radio {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 7px;
+  margin-right: 4px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.check-wrap {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+}
+
+#preview{
+  height: 300px;
+  width: 400px;
+  box-shadow: 0 0 12px 6px #fff;
+  border-radius: 4px;
+  background: #0c0c0c54;
+}
+
+.upload-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-btn{
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #2b3e37;
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 24px;
+  background: hsl(0deg 0% 100% / 76%);
+  font-weight: 900;
+}
+
+.input-wrap {
+  background: hsl(0deg 0% 100% / 76%);
+  font-size: 24px;
+  border-radius: 4px;
+  padding: 12px;
+  width: fit-content;
+  margin: 0 auto;
+  margin: 12px auto 0;
+  color: #2b3e37;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap label{
+  font-weight: 900;
+}
+
+.input-wrap input{
+  border: 0;
+  height: 33px;
+  border-radius: 4px;
+  padding: 0 8px;
+}
+
+.btns{
+  text-align: center;
+}
+
+.btns.embed span:nth-of-type(2) {
+  display: none;
+}
+
+.btns.extract span:nth-of-type(1)  {
+  display: none;
+}
+
+.btns span {
+  background: hsl(0deg 0% 100% / 76%);
+  width: fit-content;
+  margin: 12px auto;
+  font-size: 24px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  color: #2b3e37;
+  font-weight: 900;
+  cursor: pointer;
+}
+
 .progress{
   width: 50%;
   height: 5px;
@@ -5,6 +124,7 @@
   border-radius: 4px;
   margin-top: 10px;
   position: relative;
+  display: none;
 }
 .progress>span{
   display: inline-block;
@@ -17,3 +137,4 @@
   background-color: rgb(98, 230, 74);
   transition: width 0.3s ease-out;
 }
+

@@ -1,82 +1,89 @@
-const express = require('express');
-const path = require('path');
-const multer = require('multer');
-const child_process = require('child_process');
-const cors = require('cors');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
+const express = require('express')
+const path = require('path')
+const multer = require('multer')
+const child_process = require('child_process')
+const cors = require('cors')
+const { v4: uuidv4 } = require('uuid')
+const fs = require('fs')
 
-const app = express();
+const app = express()
 
 //跨域请求cors
 app.use(
   cors({
     origin: '*',
     credentials: true,
-  }),
-);
-app.use(express.static('template'));
+  })
+)
+app.use(express.static('template'))
 
 // 自定义 multer 的 diskStorage 的存储目录与文件名
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'imgs');
+    cb(null, 'imgs')
   },
   filename: function (req, file, cb) {
-    cb(null, `${uuidv4()}_${file.fieldname}`);
+    cb(null, `${uuidv4()}_${file.fieldname}`)
   },
-});
+})
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage })
 
 // 页面渲染
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'view/upload.html'));
-});
+  res.sendFile(path.join(__dirname, 'view/upload.html'))
+})
 
-// 上传文件
+// 加水印
 app.post('/upload', upload.any(), async function (req, res) {
-  const { path: filePath, filename } = req.files[0];
-  const successInfo = await exec(
-    'embed',
-    req.query,
-    filePath,
-    `output/${filename}`,
-  );
-  fs.unlinkSync(filePath);
-  res.send({ message: '上传成功' });
-});
+  const { path: filePath, filename } = req.files[0]
+  const embedPath = `embed/${filename}`
+  await exec('embed', req.query, filePath, embedPath)
+  const fileData = fs.readFileSync(embedPath)
+  fs.unlinkSync(filePath)
+  fs.unlinkSync(embedPath)
+  res.send({
+    fileData,
+    fileName: `water_mark_${filename}`,
+  })
+})
 
-// 加密
-app.post('');
-
-// 解密
+// 获取水印信息
+app.post('/get-info', upload.any(), async (req, res) => {
+  const { path: filePath, filename } = req.files[0]
+  const extractPath = `imgs/${filename}`
+  const info = await exec('extract', req.query, filePath, extractPath)
+  fs.unlinkSync(extractPath)
+  console.log(info, req.data)
+})
 
 // 执行python命令
-const exec = (type, params, inputFilePath, outputFile) => {
+const exec = (type, params, inputFilePath, embedFile) => {
   return new Promise((resolve, reject) => {
-    let order = '';
+    let order = ''
     if (type === 'embed') {
-      order += 'blind_watermark --embed ';
-      if (params.pwd) {
-        order += `--pwd "${params.pwd}" `;
-      }
-      order += `"${inputFilePath}" `;
-      if (params.info) {
-        order += `"${params.info}" `;
-      }
-      order += `"${outputFile}"`;
+      order += 'blind_watermark --embed '
+      order += `--pwd ${params.pwd} `
+      order += `"${inputFilePath}" `
+      order += `${params.info} `
+      order += `"${embedFile}"`
+    } else {
+      order += 'blind_watermark --extract --wm_shape 111 '
+      order += `--pwd ${params.pwd} `
+      order += `"${inputFilePath}"`
     }
+    console.log(order)
     child_process.exec(order, function (error, stdout, stderr) {
       if (error) {
-        reject({});
+        console.log(error)
+        reject({})
       }
       resolve({
         stdout,
         stderr,
-      });
-    });
-  });
-};
+      })
+    })
+  })
+}
 
-app.listen(3002, '127.0.0.1', function () {});
+app.listen(3002, '127.0.0.1', function () {})

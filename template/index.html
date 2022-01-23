@@ -3,39 +3,40 @@
 
 <head>
   <meta charset="utf-8">
-  <link href="./style.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
   </link>
 </head>
 
 <body>
   <div class="radio-wrap">
-    <div>
-      <input type="radio" id="embed" name="watermark" value="embed" checked>
-      <label for="embed">加盲水印</label>
+    <div class="check-wrap" data-name="embed" style="margin-right: 24px;">
+      <div class="radio"></div>
+      <span for="embed">加盲水印</span>
     </div>
-    <div>
-      <input type="radio" id="extract" name="watermark" value="extract">
-      <label for="extract">提取盲水印信息</label>
+    <div class="check-wrap" data-name="extract">
+      <div class="radio"></div>
+      <span for="extract">提取盲水印信息</span>
     </div>
   </div>
-  <div>
-    <input id="file" type="file">
+  <div class="upload-wrap">
+    <img id="preview" />
+    <input id="file" type="file" style="display: none;" accept="image/jpeg,image/jpg,image/png">
+    <div class="upload-btn" onclick="this.previousElementSibling.click()">上传图片</div>
     <div class="progress">
       <span></span>
     </div>
   </div>
-  <div>
-    <label>水印信息</label>
-    <input type="text" id="info" placeholder="输入水印信息" />
+  <div class="input-wrap">
+    <label>水印信息（必填）</label>
+    <input type="text" id="info" placeholder="输入水印信息（必填）" />
   </div>
-  <div>
-    <label>水印密码（数字）</label>
-    <input type="" id="pwd" placeholder="输入水印密码（数字）" onkeyup="value=value.replace(/[^\d]/g,'')" />
+  <div class="input-wrap">
+    <label>水印密码（必填、数字）</label>
+    <input type="" id="pwd" placeholder="输入水印密码（必填、数字）" onkeyup="value=value.replace(/[^\d]/g,'')" />
   </div>
   <div class="btns">
     <span>提交</span>
     <span>提取</span>
-    <span>取消</span>
   </div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script type="text/javascript" src="./utils.js"></script>
