@@ -43,6 +43,7 @@ app.post('/upload', upload.any(), async function (req, res) {
     fs.unlinkSync(filePath);
     fs.unlinkSync(embedPath);
   };
+console.log(filename)
   try {
     // 保存水印图片路径
     const { stdout } = await exec('embed', req.query, filePath, embedPath);
@@ -125,4 +126,4 @@ const exec = (type, params, inputFilePath, embedFile) => {
   });
 };
 
-app.listen(3002, '127.0.0.1', function () {});
+app.listen(3002, '0.0.0.0', function () {});
