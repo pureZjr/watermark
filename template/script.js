@@ -29,7 +29,9 @@ $('.btns span')
         document.querySelector('.progress span').style.width =
           event.percent + '%'
       }
-      const onSuccess = async ({ fileData, fileName, watermarkSize }) => {
+      $('.loading').show()
+      const onSuccess = async ({ fileData, fileName }) => {
+        $('.loading').hide()
         const zip = new JSZip()
         await zip.loadAsync(fileData, { base64: true })
         const blob = await zip.generateAsync({ type: 'blob' })
@@ -48,6 +50,7 @@ $('.btns span')
         onSuccess,
         onError: () => {
           alert('添加水印失败')
+          $('.loading').hide()
         },
         params: {
           info,
@@ -56,6 +59,7 @@ $('.btns span')
       })
     } catch {
       alert('添加水印失败')
+      $('.loading').hide()
     }
   })
 
@@ -74,7 +78,9 @@ $('.btns span')
     if (!size) {
       alert('请输入水印形状')
     }
+    $('.loading').show()
     const onSuccess = ({ watermarkInfo, err }) => {
+      $('.loading').hide()
       if (err) {
         return alert(err)
       }
@@ -85,6 +91,7 @@ $('.btns span')
       onSuccess,
       onError: () => {
         alert('获取信息失败')
+        $('.loading').hide()
       },
       params: {
         pwd,
