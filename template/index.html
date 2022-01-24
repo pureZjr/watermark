@@ -34,11 +34,16 @@
     <label>水印密码（必填、数字）</label>
     <input type="" id="pwd" placeholder="输入水印密码（必填、数字）" onkeyup="value=value.replace(/[^\d]/g,'')" />
   </div>
+  <div class="input-wrap">
+    <label>水印形状</label>
+    <input type="" id="size" placeholder="输入水印形状（必填）" onkeyup="value=value.replace(/[^\d]/g,'')" />
+  </div>
   <div class="btns">
     <span>提交</span>
     <span>提取</span>
   </div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
   <script type="text/javascript" src="./utils.js"></script>
   <script type="text/javascript" src="./script.js"></script>
 </body>
