@@ -10,12 +10,12 @@ const JSZip = require('jszip');
 const app = express();
 
 //跨域请求cors
-app.use(
-  cors({
-    origin: '*',
-    credentials: true,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: '*',
+//     credentials: true,
+//   }),
+// );
 app.use(express.static('template'));
 
 // 自定义 multer 的 diskStorage 的存储目录与文件名
