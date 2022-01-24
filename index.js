@@ -84,7 +84,7 @@ app.post('/get-info', upload.any(), async (req, res) => {
   try {
     const { stdout } = await exec('extract', req.query, filePath, extractPath)
     const txt = stdout.split('Extract succeed! watermark is:\n')[1]
-    const watermarkInfo = txt.substring(-1, txt.length - 2)
+    const watermarkInfo = txt.replace('\n', '')
     fs.unlinkSync(extractPath)
     res.send({
       watermarkInfo,

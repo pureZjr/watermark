@@ -35,7 +35,7 @@
     </div>
     <div class="input-wrap">
       <label>水印信息（必填）</label>
-      <input type="text" id="info" placeholder="输入水印信息（必填）" />
+      <input οnkeyup="this.value=this.value.replace(/\s+/g,'')" type="text" id="info" placeholder="输入水印信息（必填）" />
     </div>
     <div class="input-wrap">
       <label>水印密码（必填、数字）</label>
