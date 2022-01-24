@@ -8,40 +8,47 @@
 </head>
 
 <body>
-  <h1 style="text-align: center;">免费在线 图片 添加盲水印</h1>
-  <div class="radio-wrap">
-    <div class="check-wrap" data-name="embed" style="margin-right: 24px;">
-      <div class="radio"></div>
-      <span for="embed">加盲水印</span>
+  <div style="    width: 100%;
+  height: 100%;
+  background: rgb(28 28 28 / 76%);
+  position: fixed;top:0;left:0;">
+    <h1 style="text-align: center;">免费在线 图片 添加盲水印</h1>
+    <div class="radio-wrap">
+      <div class="check-wrap" data-name="embed" style="margin-right: 24px;">
+        <div class="radio"></div>
+        <span for="embed">加盲水印</span>
+      </div>
+      <div class="check-wrap" data-name="extract">
+        <div class="radio"></div>
+        <span for="extract">提取盲水印信息</span>
+      </div>
     </div>
-    <div class="check-wrap" data-name="extract">
-      <div class="radio"></div>
-      <span for="extract">提取盲水印信息</span>
+    <div class="upload-wrap">
+      <div class="preview-wrap">
+        <img id="preview" />
+      </div>
+      <input id="file" type="file" style="display: none;" accept="image/jpeg,image/jpg,image/png">
+      <div class="upload-btn" onclick="this.previousElementSibling.click()">上传图片</div>
+      <div class="progress">
+        <span></span>
+      </div>
     </div>
-  </div>
-  <div class="upload-wrap">
-    <img id="preview" />
-    <input id="file" type="file" style="display: none;" accept="image/jpeg,image/jpg,image/png">
-    <div class="upload-btn" onclick="this.previousElementSibling.click()">上传图片</div>
-    <div class="progress">
-      <span></span>
+    <div class="input-wrap">
+      <label>水印信息（必填）</label>
+      <input type="text" id="info" placeholder="输入水印信息（必填）" />
     </div>
-  </div>
-  <div class="input-wrap">
-    <label>水印信息（必填）</label>
-    <input type="text" id="info" placeholder="输入水印信息（必填）" />
-  </div>
-  <div class="input-wrap">
-    <label>水印密码（必填、数字）</label>
-    <input type="" id="pwd" placeholder="输入水印密码（必填、数字）" onkeyup="value=value.replace(/[^\d]/g,'')" />
-  </div>
-  <div class="input-wrap">
-    <label>水印形状</label>
-    <input type="" id="size" placeholder="输入水印形状（必填）" onkeyup="value=value.replace(/[^\d]/g,'')" />
-  </div>
-  <div class="btns">
-    <span>提交</span>
-    <span>提取</span>
+    <div class="input-wrap">
+      <label>水印密码（必填、数字）</label>
+      <input type="" id="pwd" placeholder="输入水印密码（必填、数字）" onkeyup="value=value.replace(/[^\d]/g,'')" />
+    </div>
+    <div class="input-wrap">
+      <label>水印形状（必填、数字）</label>
+      <input type="" id="size" placeholder="输入水印形状（必填）" onkeyup="value=value.replace(/[^\d]/g,'')" />
+    </div>
+    <div class="btns">
+      <span>提交</span>
+      <span>提取</span>
+    </div>
   </div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.7.1/jszip.min.js"></script>

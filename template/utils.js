@@ -59,7 +59,7 @@ const http = function (option) {
   xhr.send(option.data)
 }
 
-const upload = ({ formData, onProgress, onSuccess, params }) => {
+const upload = ({ formData, onProgress, onSuccess, params, onError }) => {
   params = $.param(params)
   http({
     type: 'POST',
@@ -67,11 +67,11 @@ const upload = ({ formData, onProgress, onSuccess, params }) => {
     data: formData,
     onProgress,
     onSuccess,
-    onError: function (err) {},
+    onError,
   })
 }
 
-const getInfo = ({ formData, onProgress, onSuccess, params }) => {
+const getInfo = ({ formData, onProgress, onSuccess, params, onError }) => {
   params = $.param(params)
   http({
     type: 'POST',
@@ -79,6 +79,6 @@ const getInfo = ({ formData, onProgress, onSuccess, params }) => {
     data: formData,
     onProgress,
     onSuccess,
-    onError: function (err) {},
+    onError,
   })
 }
