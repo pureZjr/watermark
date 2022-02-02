@@ -1,33 +1,51 @@
-html{
+html {
   height: 100%;
   width: 100%;
-
 }
 
-*{
+* {
   text-align: center;
-  color: #fbb126;
-  font-family: cursive;
+  color: #fff;
+  font-family: 'Poppins',Arial,sans-serif;
 }
 
-body{
-  background-image:url('./assets/bg.jpeg');
+body {
+  background: #18191a;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.header {
+  margin: 15px 10px;
+  display: flex;
+}
+
+.header img {
+  margin: 3px 5px 3px 0;
+  width: 32px;
+  height: 32px;
+}
+
+.header div {
+  display: block;
+  box-sizing: border-box;
+  margin: 7px 5px 7px 0;
+  color: #453d83;
+  font-weight: 600;
+  font-size: 24px;
 }
 
 .radio-wrap {
   display: flex;
   height: 60px;
   align-items: center;
-  justify-content: center;
   color: #2b3e37;
   font-weight: 900;
-  font-size: 27px;
+  font-size: 12px;
   border-radius: 12px;
-  width: fit-content;
   padding: 0 24px;
   margin: 24px auto;
+  width: 100%;
 }
 
 .radio {
@@ -45,13 +63,24 @@ body{
   cursor: pointer;
   display: flex;
   align-items: center;
-
+  width: 90px;
+  justify-content: center;
+  padding: 8px 15px;
 }
 
-#preview{
-  height: 300px;
-  width: 400px;
+.check-wrap.actived {
+  background: #3a3b3c;
+  border-radius: 20px;
 }
+
+.args{
+  background-color: #242526;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 
 .preview-wrap {
   height: 300px;
@@ -59,15 +88,23 @@ body{
   box-shadow: 0 0 12px 6px #fff;
   border-radius: 4px;
   background: #0c0c0c54;
+  margin-bottom: 24px;
+  display: none;
+}
+
+#preview {
+  height: 300px;
+  width: 400px;
 }
 
 .upload-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 24px;
 }
 
-.upload-btn{
+.upload-btn {
   padding: 6px 12px;
   border-radius: 4px;
   color: #2b3e37;
@@ -75,63 +112,76 @@ body{
   font-size: 24px;
   margin-top: 24px;
   font-weight: 900;
-  background: #fbb126;
+  background: #fff;
 }
 
 .input-wrap {
-  font-size: 24px;
+  font-size: 12px;
   border-radius: 4px;
   padding: 12px;
-  width: fit-content;
-  margin: 0 auto;
-  margin: 12px auto 0;
+  width: 250px;
   color: #2b3e37;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.input-wrap label{
+.input-wrap label {
   font-weight: 900;
+  margin-bottom: 10px;
 }
 
-.input-wrap input{
+.input-wrap input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 26px;
   border: 0;
-  height: 33px;
+  margin: 0;
+  padding: 0 10px;
+  outline: 0;
+  font-family: 'Poppins',Arial,sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e4e6eb;
+  line-height: 26px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   border-radius: 4px;
-  padding: 0 8px;
-  width: 200px;
-  background: #fbb126;
-    color: #fff;
-    font-weight: 900;
-    font-size: 23px;
+  background-color: #3a3b3c;
 }
 
-.btns{
+.btns {
   text-align: center;
+  width: 56px;
+  height: 56px;
+  display: none;
 }
 
 .btns.embed span:nth-of-type(2) {
   display: none;
 }
 
-.btns.extract span:nth-of-type(1)  {
+.btns.extract span:nth-of-type(1) {
   display: none;
 }
 
 .btns span {
-  width: fit-content;
-  margin: 12px auto;
-  font-size: 24px;
-  padding: 6px 12px;
+  font-size: 17px;
   border-radius: 4px;
-  display: inline-block;
-  color: #2b3e37;
+  display: block;
+  color: #e4e6eb;
   font-weight: 900;
   cursor: pointer;
-  background: #fbb126;
+  background: #3a3b3c;
+  width: 100%;
+  height: 100%;
+  line-height: 56px;
 }
 
-.progress{
+.progress {
   width: 50%;
   height: 5px;
   border: 1px solid #ccc;
@@ -140,7 +190,7 @@ body{
   position: relative;
   display: none;
 }
-.progress>span{
+.progress > span {
   display: inline-block;
   position: absolute;
   border-radius: 4px;
@@ -152,7 +202,7 @@ body{
   transition: width 0.3s ease-out;
 }
 
-.loading{
+.loading {
   position: fixed;
   z-index: 100;
   width: 100%;
@@ -164,7 +214,20 @@ body{
 
 .loading img {
   position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
+.upimg {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: dashed #999;
+  background: url('./assets/addimg.svg') no-repeat;
+  background-position: 10px;
+  margin: 10px;
+  cursor: pointer;
 }

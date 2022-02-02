@@ -4,7 +4,8 @@ $('#file').on('change', (e) => {
   reads.readAsDataURL(f)
   reads.onload = function () {
     document.getElementById('preview').src = this.result
-    $('#preview').css('display', 'block')
+    $('.preview-wrap').css('display', 'block')
+    $('.btns').css('display', 'block')
   }
 })
 
@@ -20,10 +21,10 @@ $('.btns span')
       const pwd = $('#pwd').val()
       const info = $('#info').val()
       if (!info) {
-        alert('请输入水印信息')
+        return alert('请输入水印信息')
       }
       if (!pwd) {
-        alert('请输入水印密码')
+        return alert('请输入水印密码')
       }
       const onProgress = (event) => {
         document.querySelector('.progress span').style.width =
@@ -72,11 +73,11 @@ $('.btns span')
     formData.append(file.name, file)
     const pwd = $('#pwd').val()
     if (!pwd) {
-      alert('请输入水印密码')
+      return alert('请输入水印密码')
     }
     const size = $('#size').val()
     if (!size) {
-      alert('请输入水印形状')
+      return alert('请输入水印形状')
     }
     $('.loading').show()
     const onSuccess = ({ watermarkInfo, err }) => {
@@ -114,16 +115,17 @@ const reset = () => {
   $('#info')[0].value = null
   $('#pwd')[0].value = null
   $('#size')[0].value = null
-  $('#preview')[0].src = ''
-  $('#preview').css('display', 'none')
+  $('.preview-wrap')[0].src = ''
+  $('.preview-wrap').css('display', 'none')
+  $('.btns').css('display', 'none')
 }
 
 // 切换类型
 $('.check-wrap').on('click', (e) => {
   const $ev = $(e.currentTarget)
   const name = $ev.data('name')
-  $ev.find('.radio').text('✅')
-  $ev.siblings().find('.radio').text('')
+  $ev.addClass('actived')
+  $ev.siblings().removeClass('actived')
   reset()
   if (name === 'extract') {
     $('.btns').removeClass('embed').addClass(name)
