@@ -226,7 +226,7 @@ body {
   height: 50px;
   border-radius: 10px;
   border: dashed #999;
-  background: url('./assets/addimg.svg') no-repeat;
+  background: url('/water-mark-server/assets/addimg.svg') no-repeat;
   background-position: 10px;
   margin: 10px;
   cursor: pointer;
