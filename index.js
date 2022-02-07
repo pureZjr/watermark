@@ -30,13 +30,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// 页面渲染
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'view/upload.html'));
-});
-
 // 加水印
-app.post('/upload', upload.any(), async function (req, res) {
+app.post('/water-mark-server/upload', upload.any(), async function (req, res) {
   const { path: filePath, filename } = req.files[0];
   const embedPath = `embed/${filename}`;
   const delFile = () => {
@@ -78,7 +73,7 @@ app.post('/upload', upload.any(), async function (req, res) {
 });
 
 // 获取水印信息
-app.post('/get-info', upload.any(), async (req, res) => {
+app.post('/water-mark-server/get-info', upload.any(), async (req, res) => {
   const { path: filePath, filename } = req.files[0];
   const extractPath = `imgs/${filename}`;
   try {
