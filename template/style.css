@@ -13,6 +13,9 @@ body {
   background: #18191a;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .header {
@@ -230,4 +233,17 @@ body {
   background-position: 10px;
   margin: 10px;
   cursor: pointer;
+}
+
+.yinliu {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.yinliu a {
+  color: #453d83;
+  font-size: 24px;
+  font-weight: 900;
 }
