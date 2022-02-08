@@ -63,7 +63,7 @@ const upload = ({ formData, onProgress, onSuccess, params, onError }) => {
   params = $.param(params);
   http({
     type: 'POST',
-    url: `/water-mark-server/upload?${params}`,
+    url: `/upload?${params}`,
     data: formData,
     onProgress,
     onSuccess,
@@ -75,7 +75,7 @@ const getInfo = ({ formData, onProgress, onSuccess, params, onError }) => {
   params = $.param(params);
   http({
     type: 'POST',
-    url: `/water-mark-server/get-info?${params}`,
+    url: `/get-info?${params}`,
     data: formData,
     onProgress,
     onSuccess,

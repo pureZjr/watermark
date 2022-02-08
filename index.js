@@ -16,7 +16,7 @@ const app = express();
 //     credentials: true,
 //   }),
 // );
-app.use('/water-mark-server', express.static('template'));
+app.use('/', express.static('template'));
 
 // 自定义 multer 的 diskStorage 的存储目录与文件名
 const storage = multer.diskStorage({
@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // 加水印
-app.post('/water-mark-server/upload', upload.any(), async function (req, res) {
+app.post('/upload', upload.any(), async function (req, res) {
   const { path: filePath, filename } = req.files[0];
   const embedPath = `embed/${filename}`;
   const delFile = () => {
@@ -73,7 +73,7 @@ app.post('/water-mark-server/upload', upload.any(), async function (req, res) {
 });
 
 // 获取水印信息
-app.post('/water-mark-server/get-info', upload.any(), async (req, res) => {
+app.post('/get-info', upload.any(), async (req, res) => {
   const { path: filePath, filename } = req.files[0];
   const extractPath = `imgs/${filename}`;
   try {
