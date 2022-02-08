@@ -15,7 +15,7 @@ body {
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  margin: 0;
 }
 
 .header {
@@ -236,10 +236,7 @@ body {
 }
 
 .yinliu {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
+  padding-bottom: 30px;
 }
 
 .yinliu a {
