@@ -16,9 +16,9 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: 47.107.72.163
-          username: root
-          password: ZXCasd123
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASSWORD }}
           command_timeout: 5m
           script: |
             cd /home/watermark
